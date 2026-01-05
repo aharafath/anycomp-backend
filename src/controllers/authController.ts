@@ -88,6 +88,9 @@ export const logout = expressAsyncHandler(
       httpOnly: true,
       secure: isProd,
       sameSite: isProd ? "none" : "lax",
+      path: "/",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+      ...(isProd && { partitioned: true }),
     });
 
     res.status(200).json({ message: "Logout successful" });
