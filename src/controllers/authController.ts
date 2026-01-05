@@ -63,6 +63,7 @@ export const login = expressAsyncHandler(
       sameSite: isProd ? "none" : "lax",
       path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000,
+      partitioned: true,
     });
 
     // password remove
