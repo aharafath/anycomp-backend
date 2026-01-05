@@ -37,6 +37,10 @@ export const AppDataSource = new DataSource({
     User,
     Role,
   ],
-  migrations: ["src/migrations/*.ts"],
+  migrations: [
+    process.env.NODE_ENV === "Development"
+      ? "src/migrations/*.ts"
+      : "dist/migrations/*.js",
+  ],
   subscribers: [],
 });
